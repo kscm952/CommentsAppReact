@@ -1,3 +1,23 @@
+.comment-item {
+  list-style-type: none;
+}
+
+.comment-container {
+  display: flex;
+}
+
+.initial-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  margin-top: 18px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
 .amber {
   background-color: #f59e0b;
 }
@@ -26,103 +46,82 @@
   background-color: #0ea5e9;
 }
 
-/* Write your CSS here */
-
-.comment-item {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-}
-
-.comment-details-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
 .initial {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  background-color: #f59e0b;
-  height: 40px;
-  width: 40px;
   color: #ffffff;
-  border-radius: 100px;
-  border: none;
-}
-
-.comment-details {
-  margin-left: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.name-time-details {
-  display: flex;
-  flex-direction: row;
-}
-
-.name {
-  font-size: 20px;
   font-family: 'Roboto';
-  margin-right: 10px;
-  color: #000000;
+  font-size: 16px;
+  margin: 0;
 }
 
-.commented-time {
-  font-size: 14px;
+.username-time-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+.username {
+  color: #334155;
   font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.time {
   color: #94a3b8;
+  font-family: 'Roboto';
+  font-size: 12px;
+  margin-left: 18px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .comment {
-  font-size: 18px;
+  color: #64748b;
   font-family: 'Roboto';
-  color: #64748b;
+  font-size: 14px;
 }
 
-.like-delete-container {
+.buttons-container {
   display: flex;
-  flex-direction: row;
-  width: 100%;
   justify-content: space-between;
+  align-items: center;
 }
 
-.separator {
+.like-container {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  background-color: transparent;
+  color: #7e858e;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.like-image {
+  height: 20px;
+  width: 20px;
+  margin-right: 8px;
+}
+
+.active {
+  color: #0ea5e9;
+}
+
+.delete {
+  height: 20px;
+  width: 20px;
+}
+
+.comment-line {
   width: 100%;
-  color: #64748b;
-}
-
-.liked {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  color: #0284c7;
-}
-
-.like {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  color: #94a3b8;
-}
-
-.like-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-}
-
-.delete-icon-container {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
+  border: 1px solid #dee0e3;
 }

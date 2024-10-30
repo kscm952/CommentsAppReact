@@ -1,77 +1,66 @@
-// Write your code here
 import {formatDistanceToNow} from 'date-fns'
+
 import './index.css'
 
 const CommentItem = props => {
-  const {commentDetails, toggleLike, deleteUserComment} = props
-  const {name, comment, isLiked, id} = commentDetails
-
-  const likeImgUrl = isLiked
+  const {commentDetails} = props
+  const {id, name, comment, isLiked, initialClassName, date} = commentDetails
+  const initial = name ? name[0].toUpperCase() : ''
+  const likeTextClassName = isLiked ? 'button active' : 'button'
+  const likeImageUrl = isLiked
     ? 'https://assets.ccbp.in/frontend/react-js/comments-app/liked-img.png'
     : 'https://assets.ccbp.in/frontend/react-js/comments-app/like-img.png'
+  const postedTime = formatDistanceToNow(date)
 
-  const likeContainer = isLiked ? 'liked' : 'like'
-
-  const onClickLikeIcon = () => {
-    toggleLike(id)
+  const onClickLike = () => {
+    const {toggleIsLiked} = props
+    toggleIsLiked(id)
   }
 
-  const onClickDeleteIcon = () => {
-    deleteUserComment(id)
-  }
-  const commentsList = props
-  let commentsCount = commentsList.length
-  let className
-
-  if (commentsCount < 7) {
-    className = commentsList[commentsCount]
-  } else {
-    commentsCount = commentsCount - 7
-    className = commentsList[commentsCount]
+  const onDeleteComment = () => {
+    const {deleteComment} = props
+    deleteComment(id)
   }
 
   return (
     <li className="comment-item">
-      <div className="comment-details-container">
-        <div>
-          <p className="initial">{name[0]}</p>
+      <div className="comment-container">
+        <div className={initialClassName}>
+          <p className="initial">{initial}</p>
         </div>
-        <div className="comment-details">
-          <div className="name-time-details">
-            <h1 className="name">{name}</h1>
-            <p className="commented-time">{formatDistanceToNow(new Date())}</p>
+        <div>
+          <div className="username-time-container">
+            <p className="username">{name}</p>
+            <p className="time">{postedTime} ago</p>
           </div>
-          <div>
-            <p className="comment">{comment}</p>
-          </div>
+          <p className="comment">{comment}</p>
         </div>
       </div>
-      <div className="like-delete-container">
-        <div className={`${likeContainer}`}>
+      <div className="buttons-container">
+        <div className="like-container">
+          <img src={likeImageUrl} alt="like" className="like-image" />
           <button
+            className={likeTextClassName}
             type="button"
-            onClick={onClickLikeIcon}
-            aria-label="like-button"
+            onClick={onClickLike}
           >
-            <img src={likeImgUrl} alt="like" />
             Like
           </button>
         </div>
-        <div className="delete-icon-container">
-          <button
-            type="button"
-            onClick={onClickDeleteIcon}
-            data-testid="delete"
-            aria-label="delete-button"
-          >
-            <img
-              src="https://assets.ccbp.in/frontend/react-js/comments-app/delete-img.png"
-              alt="delete"
-            />
-          </button>
-        </div>
+        <button
+          className="button"
+          type="button"
+          onClick={onDeleteComment}
+          data-testid="delete"
+        >
+          <img
+            className="delete"
+            src="https://assets.ccbp.in/frontend/react-js/comments-app/delete-img.png"
+            alt="delete"
+          />
+        </button>
       </div>
-      <hr className="separator" />
+      <hr className="comment-line" />
     </li>
   )
 }
